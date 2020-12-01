@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api
 from flask_restful import reqparse
 import pymysql
+import serverDAO
 
 app = Flask(__name__)
 api = Api(app)
@@ -12,7 +13,7 @@ connect = pymysql.connect(host='192.168.0.40', user='etfuser', password='1q2w3e4
 cur = connect.cursor()
 
 
-class RegistUser(Resource):
+class login(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('ID', type=str)
@@ -39,7 +40,13 @@ class RegistUser(Resource):
             return {'result': 'false'}
 
 
-api.add_resource(RegistUser, '/user')
+class getuser(Resource):
+    def get(self):
+        return serverDAO.getUser()
+
+
+api.add_resource(login, '/login')
+api.add_resource(getuser, '/getuser')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)  # push
