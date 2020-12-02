@@ -39,7 +39,8 @@ class Login(Resource):
 
 class Getuser(Resource):
     def get(self):
-        return serverDAO.getUser()
+        # 튜플을 딕셔너리로 변환
+        return {i[0]: i[1] for i in serverDAO.getUser()}
 
 
 class Insertuser(Resource):

@@ -16,8 +16,7 @@ def getUser():
 
     sql = "select * from user"
     cur.execute(sql)
-
-    return {i[0]: i[1] for i in cur.fetchall()}
+    return cur.fetchall()
 
 
 def insertUser(id, password):
