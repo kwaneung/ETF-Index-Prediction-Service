@@ -5,8 +5,8 @@ import pymysql
 
 # 컨넥트를 미리 만들어준다.
 # 접속할 host, uesr, password, db, 인코딩 입력
-connect = pymysql.connect(host='192.168.0.40', user='root', password='0000',
-                          db='kwaneung', charset='utf8')
+connect = pymysql.connect(host='192.168.0.40', user='etfuser', password='1q2w3e4r',
+                          db='ETFIPS', charset='utf8')
 
 # 커서 생성
 cur = connect.cursor()
@@ -36,6 +36,23 @@ print(rows)
 
 rows = cur.fetchone()
 print(rows)
+
+# insert test
+# sql = "insert into user values('kwaneung2', '1q2w3e4r')"
+#
+# cur.execute(sql)
+#
+# sql = "select * from user"
+# cur.execute(sql)
+# print(cur.fetchall())
+
+# delete test
+# sql = "delete from user where name=%s"
+# cur.execute(sql, 'kwaneung3')  # sql, 변수를 ,로 나눠서 나열해주면댐
+
+# commit
+sql = "commit"
+cur.execute(sql)
 
 # 연결 해제
 connect.close()
