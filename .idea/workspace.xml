@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c04df1bc-0468-47e3-b08b-a4bb1c855b34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RESTAPI-server/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTAPI-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTAPI-server/db-test.py" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/db-test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTAPI-server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESTAPI-server/serverDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/serverDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESTAPI-server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
