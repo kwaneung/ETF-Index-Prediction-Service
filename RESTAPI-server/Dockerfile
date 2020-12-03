@@ -1,7 +1,7 @@
 FROM python
 
 COPY ./server.py server.py
-COPY ./serverDAO.py serverDAO.py
+COPY ./userDAO.py userDAO.py
 COPY ./service.py service.py
 
 RUN pip install flask
