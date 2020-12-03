@@ -56,9 +56,21 @@ class Insertuser(Resource):
         return serverDAO.insertUser(id, passwd)
 
 
+class Deleteuser(Resource):
+    def delete(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('ID', type=str)
+        args = parser.parse_args()
+
+        id = args['ID']
+        serverDAO.deleteUser(id)
+        return "delete"
+
+
 api.add_resource(Login, '/login')
 api.add_resource(Getuser, '/getuser')
 api.add_resource(Insertuser, '/insertuser')
+api.add_resource(Deleteuser, '/deleteuser')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)  # push
