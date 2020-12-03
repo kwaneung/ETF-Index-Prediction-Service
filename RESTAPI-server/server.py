@@ -3,16 +3,12 @@ from flask import Flask
 from flask_restful import Resource, Api
 from flask_restful import reqparse
 
-import serverDAO
+import userDAO
 import service
 
 app = Flask(__name__)
 api = Api(app)
 
-
-# connect = pymysql.connect(host='192.168.0.40', user='etfuser', password='1q2w3e4r',
-#                           db='ETFIPS', charset='utf8')
-# cur = connect.cursor()
 
 class Login(Resource):
     def post(self):
@@ -24,10 +20,7 @@ class Login(Resource):
         id = args['ID']
         passwd = args['passwd']
 
-        rows = serverDAO.getUser()  # id, name
-
-        # print('Request ID : ' + ID)
-        # print('Request passwd : ' + passwd)
+        rows = userDAO.getUser()  # id, name
 
         if (id, passwd) in rows:
             print('Result : True')
@@ -40,7 +33,7 @@ class Login(Resource):
 class Getuser(Resource):
     def get(self):
         # 튜플을 딕셔너리로 변환
-        return {i[0]: i[1] for i in serverDAO.getUser()}
+        return {i[0]: i[1] for i in userDAO.getUser()}
 
 
 class Insertuser(Resource):
@@ -53,7 +46,7 @@ class Insertuser(Resource):
         id = args['ID']
         passwd = args['passwd']
 
-        return serverDAO.insertUser(id, passwd)
+        return userDAO.insertUser(id, passwd)
 
 
 class Deleteuser(Resource):
@@ -63,15 +56,35 @@ class Deleteuser(Resource):
         args = parser.parse_args()
 
         id = args['ID']
-        serverDAO.deleteUser(id)
+        userDAO.deleteUser(id)
         return "delete"
+
+
+class Setuser(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('ID', type=str)
+        parser.add_argument('passwd', type=str)
+        args = parser.parse_args()
+
+        id = args['ID']
+        passwd = args['passwd']
+
+        tmp = userDAO.getUser()
+        print(tmp)
+        tmp = [i[0] for i in tmp]
+        if id in tmp:
+            userDAO.setUser(id, passwd)
+            return "success"
+        else:
+            return "fail"
 
 
 api.add_resource(Login, '/login')
 api.add_resource(Getuser, '/getuser')
 api.add_resource(Insertuser, '/insertuser')
 api.add_resource(Deleteuser, '/deleteuser')
+api.add_resource(Setuser, '/setuser')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)  # push
-    # app.run(debug=True)  # local test
+    app.run(host='0.0.0.0', port=8000, debug=True)
