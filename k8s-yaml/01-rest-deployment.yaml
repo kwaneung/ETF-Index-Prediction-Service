@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-rest-deployment
+  namespace: dev
+  labels:
+    app: test-rest-service-label
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-rest-service-label
+
+  template:
+    metadata:
+      labels:
+        app: test-rest-service-label
+
+    spec:
+      containers:
+        - name: test-rest-service-container
+          image: 192.168.0.10:5000/dev/test-rest:0.14
+          ports:
+          - name: rest-port
+            containerPort: 8000
+          imagePullPolicy: Always
