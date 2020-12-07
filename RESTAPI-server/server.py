@@ -60,7 +60,7 @@ class Deleteuser(Resource):
         return "delete"
 
 
-class Setuser(Resource):
+class Updateuser(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('ID', type=str)
@@ -74,7 +74,7 @@ class Setuser(Resource):
         print(tmp)
         tmp = [i[0] for i in tmp]
         if id in tmp:
-            userDAO.setUser(id, passwd)
+            userDAO.updateUser(id, passwd)
             return "success"
         else:
             return "fail"
@@ -84,7 +84,7 @@ api.add_resource(Login, '/login')
 api.add_resource(Getuser, '/getuser')
 api.add_resource(Insertuser, '/insertuser')
 api.add_resource(Deleteuser, '/deleteuser')
-api.add_resource(Setuser, '/setuser')
+api.add_resource(Updateuser, '/updateuser')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
