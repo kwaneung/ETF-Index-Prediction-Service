@@ -22,7 +22,7 @@ def commit(connect):
 def getUser():
     connect = dbConnect('192.168.0.40', 'etfuser', '1q2w3e4r', 'ETFIPS')
     if not connect:
-        print("연결 실패")
+        print("Connection fail")
         return False
     else:
         cur = connect.cursor()
@@ -33,29 +33,41 @@ def getUser():
 
 def insertUser(id, password):
     connect = dbConnect('192.168.0.40', 'etfuser', '1q2w3e4r', 'ETFIPS')
-    cur = connect.cursor()
-    sql = """insert into user values(%s,%s)"""
-    cur.execute(sql, (id, password))
-    commit(connect)
-    return
+    if not connect:
+        print("Connection fail")
+        return False
+    else:
+        cur = connect.cursor()
+        sql = """insert into user values(%s,%s)"""
+        cur.execute(sql, (id, password))
+        commit(connect)
+        return
 
 
 def updateUser(id, password):
     connect = dbConnect('192.168.0.40', 'etfuser', '1q2w3e4r', 'ETFIPS')
-    cur = connect.cursor()
-    sql = """update user set password=%s where id=%s"""
-    cur.execute(sql, (password, id))
-    commit(connect)
-    return
+    if not connect:
+        print("Connection fail")
+        return False
+    else:
+        cur = connect.cursor()
+        sql = """update user set password=%s where id=%s"""
+        cur.execute(sql, (password, id))
+        commit(connect)
+        return
 
 
 def deleteUser(id):
     connect = dbConnect('192.168.0.40', 'etfuser', '1q2w3e4r', 'ETFIPS')
-    cur = connect.cursor()
-    sql = """delete from user where id=%s"""
-    cur.execute(sql, id)
-    commit(connect)
-    return
+    if not connect:
+        print("Connection fail")
+        return False
+    else:
+        cur = connect.cursor()
+        sql = """delete from user where id=%s"""
+        cur.execute(sql, id)
+        commit(connect)
+        return
 
 
 if __name__ == '__main__':
