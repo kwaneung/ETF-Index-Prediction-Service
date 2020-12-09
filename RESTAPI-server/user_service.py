@@ -19,7 +19,13 @@ class User(Resource):
         id = args['ID']
         passwd = args['passwd']
 
-        return user_DAO.insertUser(id, passwd)
+        users = user_DAO.getUser()
+        users = [i[0] for i in users]
+
+        if id in users:  # 이미 존재하면 실패
+            return False
+        else:
+            return user_DAO.insertUser(id, passwd)
 
     def delete(self):  # delete
         parser = reqparse.RequestParser()
@@ -27,8 +33,13 @@ class User(Resource):
         args = parser.parse_args()
 
         id = args['ID']
-        user_DAO.deleteUser(id)
-        return "delete"
+
+        users = user_DAO.getUser()
+        users = [i[0] for i in users]
+        if id in users:
+            return user_DAO.deleteUser(id)
+        else:
+            return False
 
     def patch(self):  # update
         parser = reqparse.RequestParser()
@@ -39,14 +50,12 @@ class User(Resource):
         id = args['ID']
         passwd = args['passwd']
 
-        tmp = user_DAO.getUser()
-        print(tmp)
-        tmp = [i[0] for i in tmp]
-        if id in tmp:
-            user_DAO.updateUser(id, passwd)
-            return "success"
+        users = user_DAO.getUser()
+        users = [i[0] for i in users]
+        if id in users:
+            return user_DAO.updateUser(id, passwd)
         else:
-            return "fail"
+            return False
 
     def put(self):  # put method :  all change(Delete and insert)
         return "not implemented"

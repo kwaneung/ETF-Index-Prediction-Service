@@ -41,7 +41,7 @@ def insertUser(id, password):
         sql = """insert into user values(%s,%s)"""
         cur.execute(sql, (id, password))
         commit(connect)
-        return
+        return True
 
 
 def updateUser(id, password):
@@ -54,7 +54,7 @@ def updateUser(id, password):
         sql = """update user set password=%s where id=%s"""
         cur.execute(sql, (password, id))
         commit(connect)
-        return
+        return True
 
 
 def deleteUser(id):
@@ -67,7 +67,7 @@ def deleteUser(id):
         sql = """delete from user where id=%s"""
         cur.execute(sql, id)
         commit(connect)
-        return
+        return True
 
 
 if __name__ == '__main__':
