@@ -8,4 +8,13 @@ ETF Index Prediction Service
 
 server.py : 메인 서버 \
 user_DAO.py : 사용자 DB 처리 \
-user_service.py : 로직 처리 \
+user_service.py : 로직 처리 
+
+/login
+- post : login {id, passwd}
+
+/user
+- post : insert user {id, passwd}
+- patch : update user {id, passwd} password 변경
+- get : get user
+- delete : delete user {id}
