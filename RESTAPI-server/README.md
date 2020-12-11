@@ -2,6 +2,20 @@
 ETF Index Prediction Service
 
 
+# Infra
+k8s-master-01\
+k8s-worker-01\
+k8s-worker-02\
+ -> 쿠버네티스 클러스터\
+db-mariadb-01\
+ -> mariadb\
+jkns-server-01\
+ -> Jenkins 서버
+ 
+ 
+추후 별도 서버들은 모두 쿠버네티스 클러스터 안에 Pod로 마이그레이션 할 예정
+
+
 # Rest API Server
 
 사용 라이브러리 : Flask, flask_restful, pymysql
