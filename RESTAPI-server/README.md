@@ -13,8 +13,9 @@ jkns-server-01\
  -> Jenkins 서버
  
  
-깃 푸시를 하게되면 젠킨스 서버에서 웹훅으로 가져와 쉘 수행
-젠킨스 테스트
+깃 푸시를 하게되면 젠킨스 서버에서 웹훅으로 가져와 rest api server 폴더안의 DOCKERFILE을 이용해
+docker build & docker push 수행.
+컨테이너는 항상 latest 이미지를 사용하게끔 수정
  
  
 추후 별도 서버들은 모두 쿠버네티스 클러스터 안에 Pod로 마이그레이션 할 예정

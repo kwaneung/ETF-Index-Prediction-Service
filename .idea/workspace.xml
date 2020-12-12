@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c04df1bc-0468-47e3-b08b-a4bb1c855b34" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RESTAPI-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
