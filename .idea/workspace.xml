@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c04df1bc-0468-47e3-b08b-a4bb1c855b34" name="Default Changelist" comment="" />
+    <list default="true" id="c04df1bc-0468-47e3-b08b-a4bb1c855b34" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/RESTAPI-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/RESTAPI-server/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
